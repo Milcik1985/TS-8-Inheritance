@@ -1,0 +1,57 @@
+// Create a simple TypeScript program that models a basic hierarchy of company employees. You will have a base class called Employee that includes common properties such as name and position.
+// To the  Employee  add property isHaveProject and methods: setEmployeeToHaveProject and setEmployeeEmptyProject
+class Employee {
+    constructor(name: string, position: string) {}
+
+    isHaveProject: boolean = false;
+
+    setEmployeeToHaveProject() {
+        this.isHaveProject = true;
+    }
+
+    setEmployeeEmptyProject() {
+        this.isHaveProject = false;
+    }
+// Implement a method in each subclass that prints a description of the employee, including their name, position, and any subclass-specific information. 
+    printDescription() {
+        console.log(`Employee Name: ${this.name}`);
+        console.log(`Position: ${this.position}`);
+    }
+}
+
+//  Then, create two subclasses, Manager and Developer, that inherit from Employee. The Manager class should have an additional property teamSize (indicating how many people they manage), and the Developer class should have a property specialty (indicating their area of expertise, e.g., "Frontend" or "Backend"). 
+class Manager extends Employee {
+    constructor(name: string, teamSize: number) {
+        super(name, "Manager");
+        this.teamSize = teamSize;
+    }
+
+    teamSize: number;
+
+    printDescription() {
+        super.printDescription();
+        console.log(`Team Size: ${this.teamSize}`);
+    }
+}
+
+class Developer extends Employee {
+    constructor(name: string, specialty: string) {
+        super(name, "Developer");
+        this.specialty = specialty;
+    }
+
+    specialty: string;
+
+    printDescription() {
+        super.printDescription();
+        console.log(`Specialty: ${this.specialty}`);
+    }
+}
+
+const manager1 = new Manager("John Doe", 10);
+manager1.setEmployeeToHaveProject();
+manager1.printDescription();
+
+const developer1 = new Developer("Alice Smith", "Frontend");
+developer1.setEmployeeEmptyProject();
+developer1.printDescription();
